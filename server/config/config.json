@@ -1,0 +1,24 @@
+{
+  "secret": "ZXIkwJVFiSIsIiJbmFtZJb21ZXIiCNdm6MTYzMjIzZc3N1OmV4cCIcSI6IkpJLMz2VyhlV",
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "msc_web_tec_project",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
