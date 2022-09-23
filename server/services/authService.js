@@ -23,7 +23,7 @@ async function register(params) {
     await model.User.create({
         firstName: params.firstName,
         lastName: params.lastName,
-        password: await bcrypt.hash(params.password, 10),
+        // password: await bcrypt.hash(params.password, 10),
         email: params.email,
         isActive: true,
     });
