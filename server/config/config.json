@@ -15,10 +15,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "aayrasof_pro_visit_app_dev",
+    "password": "aayrasof_pro_visit_app_dev",
+    "database": "aayrasof_pro_visit_app_dev",
+    "host": "103.138.151.22",
     "dialect": "mysql"
   }
 }
