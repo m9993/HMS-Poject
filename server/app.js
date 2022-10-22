@@ -19,10 +19,10 @@ app.get('/', (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>MScWebTecProject</title>
+            <title>HMS</title>
         </head>
         <body>
-            <h1>MScWebTecProject</h1>
+            <h1>HMS</h1>
             <p>API is ready to use</p>
         </body>
         </html>
@@ -32,7 +32,9 @@ app.get('/', (req, res) => {
 
 // api routes
 const routePrefix = '/api';
-app.use(`${routePrefix}/auth`, require('./controllers/authController'));
+app.use(`${routePrefix}/user`, require('./controllers/userController'));
+app.use(`${routePrefix}/seat`, require('./controllers/seatController'));
+app.use(`${routePrefix}/notice`, require('./controllers/noticeController'));
 
 
 // start server

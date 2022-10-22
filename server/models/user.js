@@ -11,14 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Seat, { foreignKey: 'seatId', as: 'assignedSeat' });
+      this.hasMany(models.Payment, { foreignKey: 'userId', as:'payments'});
+      this.belongsToMany(models.Notice, { foreignKey: 'userId', through: 'user_notices', as: 'userNotices' });
     }
   }
   User.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    password: DataTypes.STRING,
+    name: DataTypes.STRING,
+    address: DataTypes.STRING,
     email: DataTypes.STRING,
-    isActive: DataTypes.BOOLEAN
+    password: DataTypes.STRING,
+    phone: DataTypes.STRING,
+    type: DataTypes.ENUM('1', '2'),
+    nid: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',

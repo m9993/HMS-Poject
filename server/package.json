@@ -1,5 +1,5 @@
 {
-    "name": "MScWebTecProject",
+    "name": "HMS",
     "version": "1.0.0",
     "description": "",
     "main": "app.js",
@@ -13,7 +13,7 @@
         "db-create": "npx sequelize-cli db:create",
         "db-drop": "npx sequelize-cli db:drop"
     },
-    "author": "TrillionBits",
+    "author": "Muntasir",
     "license": "ISC",
     "devDependencies": {
         "nodemon": "^2.0.14",
