@@ -1,16 +1,16 @@
-import { ToastContainer } from "react-toastify";
-import User from "./components/user/User";
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 
-function App() {
+export default function App() {
   return (
-    <>
-    <div className="container mt-5">
-      <User />
-    </div>
-    <ToastContainer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home/:id" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
