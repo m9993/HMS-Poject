@@ -35,6 +35,7 @@ const routePrefix = '/api';
 app.use(`${routePrefix}/user`, require('./controllers/userController'));
 app.use(`${routePrefix}/seat`, require('./controllers/seatController'));
 app.use(`${routePrefix}/notice`, require('./controllers/noticeController'));
+app.use(`${routePrefix}/payment`, require('./controllers/paymentController'));
 
 
 // start server

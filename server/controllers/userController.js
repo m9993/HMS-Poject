@@ -91,5 +91,5 @@ function search(req, res, next) {
 }
 
 function claimUser(req, res, next) {
-  res.json({ success: false, authUser: req.user });
+  res.json({ success: true, authUser: req.user });
 }
