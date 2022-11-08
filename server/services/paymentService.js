@@ -4,6 +4,7 @@ const { Op } = require("sequelize");
 module.exports = {
   getAll,
   approve,
+  pay,
 };
 
 async function getAll() {
@@ -31,5 +32,17 @@ async function approve(paymentId) {
   return {
     success: true,
     message: "Payment approved.",
+  };
+}
+
+async function pay(params, authUser) {
+  await model.Payment.create({
+    method: params.method,
+    isApproved: false,
+    userId: authUser.id,
+  });
+  return {
+    success: true,
+    message: "Paid! Waiting for approval.",
   };
 }
