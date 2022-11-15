@@ -34,7 +34,7 @@ export default function Navbar() {
             <img
               src={`https://ui-avatars.com/api/?background=random&name=${authUser.name}`}
               className="rounded-circle me-2"
-              style={{ width: "50px" }}
+              style={{ width: "40px" }}
               alt="Avatar"
             />
             <div>{authUser.name}</div>

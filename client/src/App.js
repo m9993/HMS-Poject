@@ -6,6 +6,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import AdminHomePage from "./pages/admin/AdminHomePage";
 import MemberHomePage from "./pages/member/MemberHomePage";
 import LoginPage from "./pages/LoginPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/" element={<LoginPage />} />
           <Route path="/admin-home/" element={<AdminHomePage />} />
           <Route path="/member-home/" element={<MemberHomePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>
