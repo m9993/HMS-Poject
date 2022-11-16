@@ -5,7 +5,6 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
-import Navbar from "../../components/Navbar";
 
 export default function AdminHomePage() {
   const cards = [
@@ -29,7 +28,7 @@ export default function AdminHomePage() {
       ),
     },
     {
-      to: "",
+      to: "/seats",
       title: "Seat",
       description:
         "Manage all seat, like add, edit and delete seat from the HMS and set seat rent.",
@@ -90,7 +89,6 @@ export default function AdminHomePage() {
 
   return (
     <>
-      <Navbar />
       <div className="container d-flex justify-content-center flex-wrap mt-5">
         {cards.map((item, index) => (
           <Link to={item.to} key={index} style={{ textDecoration: "none" }}>

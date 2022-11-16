@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getData } from "../service";
 
-export default function Navbar() {
+export default function Navbar(props) {
   let navigate = useNavigate();
   const [authUser, setAuthUser] = useState();
 
@@ -13,12 +13,15 @@ export default function Navbar() {
       claimUser.authUser.type == 1
         ? navigate("/admin-home/")
         : navigate("/member-home/");
+    } else {
+      navigate("/");
     }
   };
 
   useEffect(() => {
     checkAuth();
-  }, []);
+    props.setNavReload(false)
+  }, [props.navReload]);
 
   const logout = () => {
     setAuthUser(null);

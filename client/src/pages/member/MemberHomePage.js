@@ -5,7 +5,6 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
-import Navbar from "../../components/Navbar";
 
 export default function MemberHomePage() {
   const cards = [
@@ -51,7 +50,6 @@ export default function MemberHomePage() {
 
   return (
     <>
-      <Navbar />
       <div className="container d-flex justify-content-center flex-wrap mt-5">
         {cards.map((item, index) => (
           <Link to={item.to} key={index} style={{ textDecoration: "none" }}>
