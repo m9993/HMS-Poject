@@ -3,10 +3,9 @@ import Modal from "react-modal";
 import { toast } from "react-toastify";
 import { getData, postData } from "../../../service";
 
-export default function UserCreateModal(props) {
-  const [inputs, setInputs] = useState({});
+export default function UserEditModal(props) {
   const [seats, setSeats] = useState([]);
-  console.log(inputs)
+
   const customStyles = {
     content: {
       top: "50%",
@@ -18,7 +17,7 @@ export default function UserCreateModal(props) {
     },
   };
   const closeModal = () => {
-    props.setIsAddModalVisible(false);
+    props.setIsEditModalVisible(false);
   };
   const fetchSeats = async () => {
     const res = await getData("/seat/get-all");
@@ -30,9 +29,11 @@ export default function UserCreateModal(props) {
     });
     setSeats(availableSeats);
   };
-
   const submit = async () => {
-    const res = await postData("/user/register", inputs);
+    const res = await postData(
+      `/user/edit/${props.editData.id}`,
+      props.editData
+    );
     if (!res.success) {
       toast.error(res.message);
       return;
@@ -41,7 +42,6 @@ export default function UserCreateModal(props) {
     props.loadData();
     closeModal();
     fetchSeats()
-    setInputs({})
   };
 
   useEffect(() => {
@@ -50,13 +50,13 @@ export default function UserCreateModal(props) {
 
   return (
     <Modal
-      isOpen={props.isAddModalVisible}
+      isOpen={props.isEditModalVisible}
       onRequestClose={closeModal}
       style={customStyles}
-      contentLabel="Add User"
+      contentLabel="Edit User"
     >
       <div className="mb-3 d-flex align-items-center justify-content-between">
-        <h5>User Register</h5>
+        <h5>Edit User</h5>
         <button onClick={closeModal} type="button" className="btn">
           <i className="fa-solid fa-xmark"></i>
         </button>
@@ -66,46 +66,53 @@ export default function UserCreateModal(props) {
           className="form-control my-1"
           type="text"
           placeholder="Name"
-          onChange={(e) => setInputs({ ...inputs, name: e.target.value })}
+          value={props.editData.name}
+          onChange={(e) =>
+            props.setEditData({ ...props.editData, name: e.target.value })
+          }
         />
         <input
           className="form-control my-1"
           type="text"
           placeholder="Address"
-          onChange={(e) => setInputs({ ...inputs, address: e.target.value })}
-        />
-        <input
-          className="form-control my-1"
-          type="text"
-          placeholder="Email"
-          onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
-        />
-        <input
-          className="form-control my-1"
-          type="text"
-          placeholder="Password"
-          onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+          value={props.editData.address}
+          onChange={(e) =>
+            props.setEditData({ ...props.editData, address: e.target.value })
+          }
         />
         <input
           className="form-control my-1"
           type="text"
           placeholder="Phone"
-          onChange={(e) => setInputs({ ...inputs, phone: e.target.value })}
+          value={props.editData.phone}
+          onChange={(e) =>
+            props.setEditData({ ...props.editData, phone: e.target.value })
+          }
         />
         <input
           className="form-control my-1"
           type="text"
           placeholder="NID"
-          onChange={(e) => setInputs({ ...inputs, nid: e.target.value })}
+          value={props.editData.nid}
+          onChange={(e) =>
+            props.setEditData({ ...props.editData, nid: e.target.value })
+          }
         />
         <select
           className="form-select my-1"
           aria-label="Default select example"
-          onChange={e=>setInputs({ ...inputs, seatId: e.target.value })}
+          value={props.editData.seatId}
+          onChange={(e) =>
+            props.setEditData({ ...props.editData, seatId: e.target.value })
+          }
         >
-          <option disabled selected value=''>Select Seat</option>
+          <option disabled selected value="">
+            Select Seat
+          </option>
           {seats.map((element) => (
-            <option value={element.id}>{`Code: ${element.code} (${element.rent} ৳)`}</option>
+            <option
+              value={element.id}
+            >{`Code: ${element.code} (${element.rent} ৳)`}</option>
           ))}
         </select>
         <button className="btn btn-primary mt-2" type="submit" onClick={submit}>

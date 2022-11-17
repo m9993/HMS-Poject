@@ -49,7 +49,7 @@ export default function LoginPage(props) {
               required
               error={false}
               // defaultValue="Hello World"
-              helperText="Email is required."
+              // helperText="Email is required."
               style={{ marginBottom: 20 }}
               onChange={(e) => {
                 setInputs({ ...inputs, email: e.target.value });
@@ -62,7 +62,7 @@ export default function LoginPage(props) {
               required
               error={false}
               // defaultValue="Hello World"
-              helperText="Password is required."
+              // helperText="Password is required."
               type="password"
               style={{ marginBottom: 20 }}
               onChange={(e) => {

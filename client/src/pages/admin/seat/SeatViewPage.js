@@ -26,7 +26,8 @@ export default function SeatViewPage() {
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="container">
+        <h3 className="mt-5">Seat</h3>
         <button className="btn" onClick={() => setIsAddModalVisible(true)}>
           <h6>
             <i className="fa-solid fa-plus bg-primary text-white p-2 rounded"></i>
@@ -77,8 +78,8 @@ export default function SeatViewPage() {
                 <td>
                   <button
                     onClick={() => {
-                      setEditData(item)
-                      setIsEditModalVisible(true)
+                      setEditData(item);
+                      setIsEditModalVisible(true);
                     }}
                     type="button"
                     className="btn btn-link"

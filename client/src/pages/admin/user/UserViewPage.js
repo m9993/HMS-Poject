@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getData, postData } from "../../../service/index";
 import UserCreateModal from "./UserCreateModal";
-// import SeatEditModal from "./SeatEditModal";
+import UserEditModal from "./UserEditModal";
 
 export default function UserViewPage() {
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
@@ -35,6 +35,7 @@ export default function UserViewPage() {
   return (
     <>
       <div className="container">
+      <h3 className="mt-5">User</h3>
         <input
           className="form-control my-3"
           type="text"
@@ -106,13 +107,13 @@ export default function UserViewPage() {
         isAddModalVisible={isAddModalVisible}
         loadData={loadData}
       />
-      {/* <SeatEditModal
+      <UserEditModal
         setIsEditModalVisible={setIsEditModalVisible}
         isEditModalVisible={isEditModalVisible}
         editData={editData}
         setEditData={setEditData}
         loadData={loadData}
-      /> */}
+      />
     </>
   );
 }
