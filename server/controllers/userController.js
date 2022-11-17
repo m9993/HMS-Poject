@@ -13,6 +13,7 @@ router.post("/delete/:id", authorize, _delete);
 router.get("/get-all", authorize, getAll);
 router.get("/search", authorize, search);
 router.get("/claim-user", authorize, claimUser);
+router.get("/get-my-rent", authorize, getMyRent);
 
 module.exports = router;
 
@@ -92,4 +93,11 @@ function search(req, res, next) {
 
 function claimUser(req, res, next) {
   res.json({ success: true, authUser: req.user });
+}
+
+function getMyRent(req, res, next) {
+  userService
+    .getMyRent(req.user)
+    .then((data) => res.json({ ...data }))
+    .catch((err) => res.json({ success: false, error: err }));
 }

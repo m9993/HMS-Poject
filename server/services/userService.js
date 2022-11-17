@@ -11,6 +11,7 @@ module.exports = {
   _delete,
   getAll,
   search,
+  getMyRent,
 };
 
 async function login(params) {
@@ -147,5 +148,13 @@ async function search(key) {
   return {
     success: true,
     users,
+  };
+}
+
+async function getMyRent(authUser) {
+  const { rent } = await model.Seat.findByPk(authUser.seatId);
+  return {
+    success: true,
+    rent,
   };
 }

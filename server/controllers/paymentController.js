@@ -7,6 +7,7 @@ const authorize = require("../middlewares/authorize");
 
 // routes
 router.get("/get-all", authorize, getAll);
+router.get("/get-my-payments", authorize, getMyPayments);
 router.get("/approve/:id", authorize, approve);
 router.post("/pay", authorize, paySchema, pay);
 
@@ -15,6 +16,13 @@ module.exports = router;
 function getAll(req, res, next) {
   paymentService
     .getAll()
+    .then((data) => res.json({ ...data }))
+    .catch((err) => res.json({ success: false, error: err }));
+}
+
+function getMyPayments(req, res, next) {
+  paymentService
+    .getMyPayments(req.user)
     .then((data) => res.json({ ...data }))
     .catch((err) => res.json({ success: false, error: err }));
 }

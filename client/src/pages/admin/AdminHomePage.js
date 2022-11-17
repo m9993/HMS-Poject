@@ -64,7 +64,7 @@ export default function AdminHomePage() {
       ),
     },
     {
-      to: "/",
+      to: "/payments",
       title: "Payment",
       description:
         "Manage all payments from members like view and approve payments.",

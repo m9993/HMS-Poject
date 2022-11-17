@@ -3,12 +3,31 @@ const { Op } = require("sequelize");
 
 module.exports = {
   getAll,
+  getMyPayments,
   approve,
   pay,
 };
 
 async function getAll() {
   const payments = await model.Payment.findAll({
+    order: [["id", "DESC"]],
+    include: [
+      {
+        model: model.User,
+        as: "paidBy",
+        include: [{ model: model.Seat, as: "assignedSeat" }],
+      },
+    ],
+  });
+  return {
+    success: true,
+    payments,
+  };
+}
+
+async function getMyPayments(authUser) {
+  const payments = await model.Payment.findAll({
+    where: { userId: authUser.id },
     order: [["id", "DESC"]],
     include: [
       {

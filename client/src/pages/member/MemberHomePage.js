@@ -26,7 +26,7 @@ export default function MemberHomePage() {
       ),
     },
     {
-      to: "/",
+      to: "/member-payments",
       title: "Payment",
       description: "View and pay your payments.",
       icon: (
