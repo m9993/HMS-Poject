@@ -27,6 +27,7 @@ export default function SeatCreateModal(props) {
     toast.success(res.message);
     props.loadData();
     closeModal();
+    setInputs({})
   };
   return (
     <Modal

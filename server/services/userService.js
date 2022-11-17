@@ -57,6 +57,13 @@ async function register(params) {
     type: 2,
   });
 
+  await model.Seat.update(
+    {
+      isAvailable: false,
+    },
+    { where: { id: params.seatId } }
+  );
+
   return {
     success: true,
     message: "User added",
@@ -64,12 +71,29 @@ async function register(params) {
 }
 
 async function edit(id, params) {
+  const user = await model.User.findByPk(id);
+
   await model.User.update(
     {
       ...params,
     },
     { where: { id: id } }
   );
+
+  if (user.seatId != params.seatId) {
+    await model.Seat.update(
+      {
+        isAvailable: true,
+      },
+      { where: { id: user.seatId } }
+    );
+    await model.Seat.update(
+      {
+        isAvailable: false,
+      },
+      { where: { id: params.seatId } }
+    );
+  }
 
   return {
     success: true,
@@ -87,7 +111,7 @@ async function _delete(id) {
 
 async function getAll() {
   const users = await model.User.findAll({
-    order:[['id','DESC']],
+    order: [["id", "DESC"]],
     include: [
       {
         model: model.Seat,
@@ -103,7 +127,7 @@ async function getAll() {
 
 async function search(key) {
   const users = await model.User.findAll({
-    order:[['id','DESC']],
+    order: [["id", "DESC"]],
     where: {
       [Op.or]: [
         { name: { [Op.substring]: key } },

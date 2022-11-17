@@ -8,6 +8,7 @@ import MemberHomePage from "./pages/member/MemberHomePage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import SeatViewPage from "./pages/admin/seat/SeatViewPage";
+import UserViewPage from "./pages/admin/user/UserViewPage";
 import Navbar from "./components/Navbar";
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/" element={<LoginPage setNavReload={setNavReload} />} />
           <Route path="/admin-home/" element={<AdminHomePage />} />
           <Route path="/seats/" element={<SeatViewPage />} />
+          <Route path="/users/" element={<UserViewPage />} />
 
           <Route path="/member-home/" element={<MemberHomePage />} />
           <Route path="*" element={<NotFoundPage />} />

@@ -9,7 +9,7 @@ import {
 export default function AdminHomePage() {
   const cards = [
     {
-      to: "",
+      to: "/users",
       title: "User",
       description:
         "Manage all member, search member as needed and allocate seat foreach member",
