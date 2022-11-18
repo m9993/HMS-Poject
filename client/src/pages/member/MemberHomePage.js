@@ -9,7 +9,7 @@ import {
 export default function MemberHomePage() {
   const cards = [
     {
-      to: "",
+      to: "/member-notices",
       title: "Notice",
       description: "Manage all notices like send, delete and view from HMS.",
       icon: (

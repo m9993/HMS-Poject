@@ -104,7 +104,7 @@ export default function SeatCreateModal(props) {
               })
             }
           />
-          <label className="form-check-label" for="flexSwitchCheckDefault">
+          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
             Is Available
           </label>
         </div>

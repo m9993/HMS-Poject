@@ -41,7 +41,7 @@ export default function UserEditModal(props) {
     toast.success(res.message);
     props.loadData();
     closeModal();
-    fetchSeats()
+    fetchSeats();
   };
 
   useEffect(() => {
@@ -109,8 +109,9 @@ export default function UserEditModal(props) {
           <option disabled selected value="">
             Select Seat
           </option>
-          {seats.map((element) => (
+          {seats.map((element, index) => (
             <option
+              key={index}
               value={element.id}
             >{`Code: ${element.code} (${element.rent} ৳)`}</option>
           ))}

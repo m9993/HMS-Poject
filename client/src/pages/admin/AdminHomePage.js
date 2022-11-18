@@ -47,7 +47,7 @@ export default function AdminHomePage() {
       ),
     },
     {
-      to: "",
+      to: "/notices",
       title: "Notice",
       description: "Manage all notices like send, delete and view from HMS.",
       icon: (

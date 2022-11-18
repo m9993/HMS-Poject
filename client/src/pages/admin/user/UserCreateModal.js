@@ -6,7 +6,7 @@ import { getData, postData } from "../../../service";
 export default function UserCreateModal(props) {
   const [inputs, setInputs] = useState({});
   const [seats, setSeats] = useState([]);
-  console.log(inputs)
+  console.log(inputs);
   const customStyles = {
     content: {
       top: "50%",
@@ -40,8 +40,8 @@ export default function UserCreateModal(props) {
     toast.success(res.message);
     props.loadData();
     closeModal();
-    fetchSeats()
-    setInputs({})
+    fetchSeats();
+    setInputs({});
   };
 
   useEffect(() => {
@@ -101,11 +101,16 @@ export default function UserCreateModal(props) {
         <select
           className="form-select my-1"
           aria-label="Default select example"
-          onChange={e=>setInputs({ ...inputs, seatId: e.target.value })}
+          onChange={(e) => setInputs({ ...inputs, seatId: e.target.value })}
         >
-          <option disabled selected value=''>Select Seat</option>
-          {seats.map((element) => (
-            <option value={element.id}>{`Code: ${element.code} (${element.rent} ৳)`}</option>
+          <option disabled selected value="">
+            Select Seat
+          </option>
+          {seats.map((element, index) => (
+            <option
+              key={index}
+              value={element.id}
+            >{`Code: ${element.code} (${element.rent} ৳)`}</option>
           ))}
         </select>
         <button className="btn btn-primary mt-2" type="submit" onClick={submit}>
