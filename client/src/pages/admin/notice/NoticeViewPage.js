@@ -4,7 +4,7 @@ import { getData } from "../../../service/index";
 import NoticeCreateModal from "./NoticeCreateModal";
 
 export default function NoticeViewPage() {
-  const [isAddModalVisible, setIsAddModalVisible] = useState([]);
+  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const [data, setData] = useState([]);
 
   const loadData = async () => {
